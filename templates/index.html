@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">
+{#    <link rel="stylesheet" href="{% static 'assets/bower_components/bootstrap/dist/css/bootstrap.css' %}">#}
+    <link rel="stylesheet" href="{% static "assets/css/bootstrap-responsive.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/main.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/jsKeyboard.css" %}" type="text/css" media="screen"/>
+
+    <script src="{% static "assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"%}"></script>
+</head>
+<body>
+
+
+
+<div id="main" class="container">
+
+    <input class="input form-control" name="username" type="text" placeholder="Username...">
+
+    <div id="virtualKeyboard"></div>
+
+    <hr>
+
+</div>
+
+
+<script src="{% static "assets/bower_components/jquery/dist/jquery.js" %}"></script>
+{#<script src="{% static 'js/vendor/jquery-1.9.1.min.js'%}"></script>#}
+<script src="{% static "assets/js/vendor/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "assets/js/jsKeyboard.js" %}"></script>
+<script src="{% static "assets/js/main.js" %}"></script>
+<script>
+    var _gaq = [['_setAccount', 'UA-11577561-5'], ['_trackPageview']];
+    (function (d, t) {
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+</script>
+</body>
+</html>
