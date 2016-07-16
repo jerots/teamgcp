@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">
-{#    <link rel="stylesheet" href="{% static 'assets/bower_components/bootstrap/dist/css/bootstrap.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'assets/bower_components/bootstrap/dist/css/bootstrap.css' %}">#}
     <link rel="stylesheet" href="{% static "assets/css/bootstrap-responsive.min.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/main.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/jsKeyboard.css" %}" type="text/css" media="screen"/>
 
-    <script src="{% static "assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"%}"></script>
+    <script src="{% static "assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
 </head>
 <body>
 
 
-
 <div id="main" class="container">
 
-    <input class="input form-control" name="username" type="text" placeholder="Username...">
+    <label>The quick brown fox jumps over the lazy dog</label>
+
+{#    <input class="input form-control" id="inputbox" name="username" type="text" placeholder="enter here">#}
+    <textarea id="debugger" rows="10" disabled>THIS IS THE DEBUGGER</textarea>
+
 
     <div id="virtualKeyboard"></div>
 
