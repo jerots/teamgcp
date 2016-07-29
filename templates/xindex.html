@@ -22,12 +22,16 @@
             {#        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
             {#        <h4 class="modal-title" id="myModalLabel">Modal title</h4>#}
             {#      </div>#}
+
             <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-10px;"><span
+                        aria-hidden="true">&times;</span></button>
                 <label>Username</label>
                 <form action="/teamgcp/xtrain/" method="POST">
                     {% csrf_token %}
                     <input class="form-control" name="id">
-                    <button class="btn" type="submit" style="background:black;width:100%;margin-top:20px;color:white;">Go Training!
+                    <button class="btn" type="submit" style="background:black;width:100%;margin-top:20px;color:white;">
+                        Go Training!
                     </button>
                 </form>
             </div>

@@ -35,6 +35,7 @@ yArr2 = [
 var ctrl = {
     tempResult: [],
     temp: {},
+    counter: 5,
     input: '',
     numbers: false,
     init: function () {
@@ -54,7 +55,7 @@ var ctrl = {
             ctrl.submit();
         });
 
-        $('#trainButton').on('click', function(){
+        $('#trainButton').on('click', function () {
             $('#trainModal').modal('toggle');
         })
 
@@ -65,51 +66,65 @@ var ctrl = {
         ctrl.temp = {};
         ctrl.tempResult = [];
     },
-    submit: function(){
-      if (!ctrl.input || !ctrl.input.trim()) {
-                console.log('cannot');
-                return;
-            }
-
-            var finalResult = {
-                data: ctrl.tempResult,
-                // id: $('#username').val(),
-                id: id,
-                imposter: 'false',
-                text: ctrl.input
-            }
-
-            console.log('result', finalResult);
-            // $('#replacehere').val(JSON.stringify(finalResult));
-
-            var csrftoken = '';
-            var cookies = document.cookie.split(';');
-            _.map(cookies, function (cookie) {
-                var keyValue = cookie.split('=');
-                if (keyValue[0].trim() == 'csrftoken') {
-                    csrftoken = keyValue[1];
-                }
-                ;
-            });
-
+    submit: function () {
+        if (!ctrl.input || !ctrl.input.trim()) {
+            console.log('cannot');
             ctrl.reset();
-            window.alert('Success!');
+            return;
+        }
+        if (ctrl.input != 'codextreme2016'){
+            window.alert('You have typed codextreme2016 incorrectly!');
+            ctrl.reset();
+            return;
+        }
 
-            $.ajax({
-                url: '/api/saveResult',
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                },
-                type: 'POST',
-                data: JSON.stringify(finalResult),
-                dataType: 'json',
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
+        var finalResult = {
+            data: ctrl.tempResult,
+            // id: $('#username').val(),
+            id: id,
+            imposter: 'false',
+            text: ctrl.input
+        }
+
+        console.log('result', finalResult);
+        // $('#replacehere').val(JSON.stringify(finalResult));
+
+        var csrftoken = '';
+        var cookies = document.cookie.split(';');
+        _.map(cookies, function (cookie) {
+            var keyValue = cookie.split('=');
+            if (keyValue[0].trim() == 'csrftoken') {
+                csrftoken = keyValue[1];
+            }
+            ;
+        });
+
+        ctrl.reset();
+        window.alert('Success!');
+        if (ctrl.counter >= 0) {
+            ctrl.counter--;
+            $('#replacehere').attr('placeholder', 'Train ' + ctrl.counter + ' more times');
+
+        } else {
+            $('#replacehere').attr('placeholder','Go on to login!');
+        }
+
+
+        $.ajax({
+            url: '/api/saveResult',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            type: 'POST',
+            data: JSON.stringify(finalResult),
+            dataType: 'json',
+            success: function (res) {
+                console.log(res);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     },
     prepare: function (e) {
         var oe = e.originalEvent;
