@@ -3,6 +3,8 @@ import sys
 import json
 import ast
 import glob
+import os, os.path
+
 from django.shortcuts import render
 from django.views.decorators.csrf import requires_csrf_token
 
@@ -64,8 +66,6 @@ def saveResult(request):
     context = {}
     return render(request, 'index.html', context)
 
-import os, os.path
-
 # Taken from http://stackoverflow.com/a/600612/119527
 def safe_open(path, string):
     ''' Open "path" for writing, creating any parent directories as needed.
@@ -74,7 +74,8 @@ def safe_open(path, string):
     try:
         os.makedirs(directory)
     except OSError as exc: # Python >2.5
-        if exc.errno == errno.EEXIST and os.path.isdir(directory):
+        # if exc.errno == errno.EEXIST and os.path.isdir(directory):
+        if os.path.isdir(directory):
             pass
         else: raise
     return open(path, string)
