@@ -55,11 +55,11 @@ var ctrl = {
         });
 
     },
-    reset: function(){
-      ctrl.input = '';
-            $('#replacehere').val(ctrl.input);
-            ctrl.temp = {};
-            ctrl.tempResult = [];
+    reset: function () {
+        ctrl.input = '';
+        $('#replacehere').val(ctrl.input);
+        ctrl.temp = {};
+        ctrl.tempResult = [];
     },
     prepare: function (e) {
         var oe = e.originalEvent;
@@ -202,6 +202,8 @@ var ctrl = {
                 ;
             });
 
+            ctrl.reset();
+            window.alert('Success!');
 
             $.ajax({
                 url: '/api/saveResult',
@@ -213,8 +215,6 @@ var ctrl = {
                 dataType: 'json',
                 success: function (res) {
                     console.log(res);
-                    ctrl.reset();
-                    window.alert('Success!');
                 },
                 error: function (err) {
                     console.log(err);
