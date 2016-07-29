@@ -120,4 +120,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ( '/Users/behminyan/Desktop/HACK RESEARCH/00/static', )
+STATICFILES_DIRS = ( '/Users/sgpad017/PycharmProjects/teamgcp/static/', )

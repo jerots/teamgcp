@@ -18,11 +18,12 @@
 <div style="text-align:center;" class="container-fluid">
     <a href="/teamgcp/" class="btn btn-default" style="color:black;position:absolute;left:8px;top:8px;"><span
             class="glyphicon glyphicon-off"></span></a>
-    <div class="row" style="background:black;color:white;font-size:1.5em;padding:10px;">
+    <div class="row" style="background:black;color:#e8e8e8;font-size:1.5em;padding:10px;">
         REGISTRATION
     </div>
     <div class="row">
-        <h2 style="">Hello, {{ id }}</h2>
+        <h2 style=""><img src="{% static 'assets/img/teamgcp.png' %}" height="30px;">
+            Hello, {{ id }}</h2>
     </div>
     {#    <div class="row">#}
     {#        <div class="col-xs-12">#}
@@ -33,15 +34,16 @@
     <div class="row">
         <div class="col-xs-12">
             {#            <h1>The quick brown fox jumps over the lazy dog</h1>#}
-            <h3>Enter {{ id }} below</h3>
-            <input type="text" id="replacehere" class="form-control" style="width:90%;font-size:1.5em;padding:10px;"
+            {#            <h3>Enter {{ id }} below</h3>#}
+            <input type="text" id="replacehere" class="form-control" placeholder="Enter '{{ id }}' here"
+                   style="width:90%;font-size:1.5em;padding:10px;margin:10px;"
                    readonly/>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12" style="padding:20px;">
-            {#            <button id="submit" class="btn btn-success">Train!</button>#}
-            <button id="reset" class="btn btn-info">Reset</button>
+            <button id="submit" class="btn btn-warning">Submit!</button>
+            {#            <button id="reset" class="btn btn-info">Reset</button>#}
         </div>
     </div>
 

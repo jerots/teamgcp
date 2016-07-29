@@ -100,13 +100,15 @@ var ctrl = {
         });
 
         ctrl.reset();
-        window.alert('Success!');
+        // window.alert('Success!');
         if (ctrl.counter > 0) {
             ctrl.counter--;
             $('#replacehere').attr('placeholder', 'Train ' + ctrl.counter + ' more times');
+            window.alert('Train ' + ctrl.counter + ' more times');
 
         } else {
             $('#replacehere').attr('placeholder','Go on to login!');
+            window.alert('Go on to login!');
         }
 
 
