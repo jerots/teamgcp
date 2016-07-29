@@ -16,10 +16,26 @@ def index(request):
 def registration(request):
 
     context = {}
-    id = request.POST.get('id', False)
+    id = request.POST.get('id', 'Guest')
     context['id'] = id
 
     return render(request, 'registration.html', context)
+
+
+def xindex(request):
+    # sys.stderr.write(request)
+    context = {}
+    return render(request, 'xindex.html', context)
+
+def xtrain(request):
+    # sys.stderr.write(request)
+    context = {}
+
+    context = {}
+    id = request.POST.get('id', 'Guest')
+    context['id'] = id
+
+    return render(request, 'xtrain.html', context)
 
 
 def saveResult(request):
