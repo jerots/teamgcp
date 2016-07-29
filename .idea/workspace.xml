@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cca1cdaa-96ea-45dd-8989-9536379ebab1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/assets/js/main.js" afterPath="$PROJECT_DIR$/static/assets/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/assets/js/registration.js" afterPath="$PROJECT_DIR$/static/assets/js/registration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/teamgcp/views.py" afterPath="$PROJECT_DIR$/teamgcp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration.html" afterPath="$PROJECT_DIR$/templates/registration.html" />
     </list>
     <ignored path="teamgcp.iws" />
@@ -83,17 +78,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registration.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="registration.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/registration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+            <state relative-caret-position="270">
+              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registration.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="registration.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/assets/js/registration.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
@@ -126,8 +121,8 @@
         <option value="$PROJECT_DIR$/static/assets/js/main.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/teamgcp/views.py" />
-        <option value="$PROJECT_DIR$/templates/registration.html" />
         <option value="$PROJECT_DIR$/static/assets/js/registration.js" />
+        <option value="$PROJECT_DIR$/templates/registration.html" />
       </list>
     </option>
   </component>
@@ -872,18 +867,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/assets/js/registration.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="194" column="48" selection-start-line="194" selection-start-column="48" selection-end-line="194" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
           <folding />
         </state>
       </provider>
