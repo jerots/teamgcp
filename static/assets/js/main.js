@@ -15,7 +15,7 @@
 var serverUrl = 'http://128.199.195.84:3000/';
 // var serverUrl = 'http://localhost:80/';
 
-var special = ['shift','globe','mic', 'space', 'return','bkspace','#+=','abc','smile','mic','go','abc','123'];
+var special = ['shift', 'globe', 'mic', 'space', 'return', 'bkspace', '#+=', 'abc', 'smile', 'mic', 'go', 'abc', '123'];
 
 yArr1 = [
     [[10, 'q'], [20, 'w'], [30, 'e'], [40, 'r'], [50, 't'], [60, 'y'], [70, 'u'], [80, 'i'], [90, 'o'], [100, 'p']],
@@ -30,8 +30,6 @@ yArr2 = [
     [[13.8, '#+='], [29.5, '.'], [43, ','], [56.5, '?'], [55.5, '!'], [84.4, "'"], [100, 'bkspace']],
     [[12.5, 'abc'], [25.5, 'smile'], [73, 'space'], [82.8, '.'], [100, 'go']]
 ];
-
-
 
 
 var ctrl = {
@@ -50,6 +48,16 @@ var ctrl = {
         $('#keyboardContainer').on('touchend', function (event) {
             ctrl.record(event);
         });
+        $('#reset').on('touchend', function (event) {
+            ctrl.input = '';
+            $('#replacehere').val(ctrl.input);
+            ctrl.temp = {};
+            ctrl.tempResult = [];
+        });
+        $('#submit').on('touchend', function (event) {
+            
+        });
+
     },
     prepare: function (e) {
         var oe = e.originalEvent;
@@ -118,8 +126,8 @@ var ctrl = {
         }
 
 
-        if (!_.find(special,function(o){
-              return o == letter;
+        if (!_.find(special, function (o) {
+                return o == letter;
             })) {
             ctrl.input += letter;
             $('#replacehere').val(ctrl.input);
@@ -131,11 +139,11 @@ var ctrl = {
             ctrl.input = ctrl.input.substring(0, ctrl.input.length - 1);
             $('#replacehere').val(ctrl.input);
         } else if (letter == '123' || letter == 'abc') {
-            if (ctrl.numbers){
-                $('#keyboardPic').attr('src','/static/assets/img/iOSlow.jpg');
+            if (ctrl.numbers) {
+                $('#keyboardPic').attr('src', '/static/assets/img/iOSlow.jpg');
                 ctrl.numbers = false;
             } else {
-                $('#keyboardPic').attr('src','/static/assets/img/numbers.png');
+                $('#keyboardPic').attr('src', '/static/assets/img/numbers.png');
                 ctrl.numbers = true;
             }
         }
@@ -144,7 +152,7 @@ var ctrl = {
         var downResult = _.clone(ctrl.temp[letter]);
         ctrl.temp[letter] = null;
 
-        if (!downResult){
+        if (!downResult) {
             return;
         }
 
@@ -166,15 +174,20 @@ var ctrl = {
 
         if (result.letter == 'return') {
 
+            if (!ctrl.input || !ctrl.input.trim()) {
+                console.log('cannot');
+                return;
+            }
+
             var finalResult = {
                 data: ctrl.tempResult,
-                id: '1',
+                id: $('#username').val(),
                 imposter: 'false',
                 text: ctrl.input
             }
 
             console.log('result', finalResult);
-            $('#replacehere').val(JSON.stringify(finalResult));
+            // $('#replacehere').val(JSON.stringify(finalResult));
 
             var csrftoken = '';
             var cookies = document.cookie.split(';');
@@ -182,7 +195,8 @@ var ctrl = {
                 var keyValue = cookie.split('=');
                 if (keyValue[0].trim() == 'csrftoken') {
                     csrftoken = keyValue[1];
-                };
+                }
+                ;
             });
 
 
