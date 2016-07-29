@@ -48,15 +48,18 @@ var ctrl = {
             ctrl.record(event);
         });
         $('#reset').on('touchend', function (event) {
-            ctrl.input = '';
-            $('#replacehere').val(ctrl.input);
-            ctrl.temp = {};
-            ctrl.tempResult = [];
+            ctrl.reset();
         });
         $('#submit').on('touchend', function (event) {
 
         });
 
+    },
+    reset: function(){
+      ctrl.input = '';
+            $('#replacehere').val(ctrl.input);
+            ctrl.temp = {};
+            ctrl.tempResult = [];
     },
     prepare: function (e) {
         var oe = e.originalEvent;
@@ -210,6 +213,8 @@ var ctrl = {
                 dataType: 'json',
                 success: function (res) {
                     console.log(res);
+                    ctrl.reset();
+                    window.alert('Success!');
                 },
                 error: function (err) {
                     console.log(err);
