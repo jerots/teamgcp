@@ -24,5 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^teamgcp/$', views.index),
     url(r'^teamgcp/registration/', views.registration),
+    url(r'^teamgcp/xindex/', views.xindex),
+    url(r'^teamgcp/xtrain/', views.xtrain),
     url(r'^api/saveResult', views.saveResult),
 ]

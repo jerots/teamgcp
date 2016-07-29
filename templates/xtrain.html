@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,user-scalable=no">
+    <title>Title</title>
+    {#    <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">#}
+    <link rel="stylesheet" href="{% static 'assets/bower_components/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static "assets/css/bootstrap-responsive.min.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/main.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/jsKeyboard.css" %}" type="text/css" media="screen"/>
+
+    <script src="{% static "assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+</head>
+<body>
+
+
+<div style="text-align:center;" class="container-fluid">
+    <div class="row" style="background:orange;color:black;font-size:1.5em;padding:10px;font-weight:900;">
+        <a href="/teamgcp/xindex" class="btn" style="position:absolute;left:8px;top:8px;color:white;background:black;"><span
+                class="glyphicon glyphicon-home"></span></a>
+        {{ id }}'s training
+        {#        <button href="/teamgcp/" class="btn btn-default" style="color:black;position:absolute;right:10px;top:8px;"><span#}
+        {#                class="glyphicon glyphicon-off"></span></button>#}
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Type 'codextreme2016' below</h3>
+            <input type="text" id="replacehere" class="form-control" style="width:96%;font-size:1.5em;padding:10px;"
+                   readonly/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" style="padding:20px;">
+{#                        <button id="submit" class="btn btn-success">Train!</button>#}
+            <button id="submit" class="btn" style="color:white;background:black;"><span
+                    class="glyphicon glyphicon-screenshot"></span> Train</button>
+{#            <button id="submit" class="btn btn-warning" style="color:black;">Submit</button>#}
+        </div>
+    </div>
+
+
+</div>
+<div id="keyboardContainer" style="position:fixed;top:1204px;">
+    <div style="width:100%;">
+        <img id="keyboardPic" src='{% static 'assets/img/iOSlow.jpg' %}' width="100%"/>
+    </div>
+</div>
+<script>
+    id = '{{ id }}';
+</script>
+<script src="{% static "assets/bower_components/jquery/dist/jquery.js" %}"></script>
+<script src="{% static "assets/bower_components/lodash/lodash.js" %}"></script>
+{#<script src="{% static 'js/vendor/jquery-1.9.1.min.js'%}"></script>#}
+
+<script src="{% static "assets/js/vendor/bootstrap.min.js" %}"></script>
+{#<script type="text/javascript" src="{% static "assets/js/jsKeyboard.js" %}"></script>#}
+<script src="{% static "assets/js/xtrain.js" %}"></script>
+<script>
+    var _gaq = [['_setAccount', 'UA-11577561-5'], ['_trackPageview']];
+    (function (d, t) {
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s)
+    }(document, 'script'));
+</script>
+</body>
+</html>
