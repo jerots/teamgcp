@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width,user-scalable=no">
     <title>Title</title>
     <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">
     {#    <link rel="stylesheet" href="{% static 'assets/bower_components/bootstrap/dist/css/bootstrap.css' %}">#}
@@ -16,10 +16,14 @@
 
 
 <div style="text-align:center;" class="container-fluid">
+    <div class="row" style="background:black;color:white;font-size:1.5em;padding:10px;">
+        REGISTRATION
+    </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12" style="padding:20px;">
 {#            <h1>The quick brown fox jumps over the lazy dog</h1>#}
-            <input type="text" id="replacehere" class="form-control" />
+            <h3>Enter keyword below</h3>
+            <input type="text" id="replacehere" class="form-control" style="width:90%;font-size:2em;padding:10px;"/>
         </div>
     </div>
 
@@ -27,7 +31,7 @@
 </div>
 <div id="keyboardContainer" style="position:fixed;top:1204px;">
     <div style="width:100%;">
-        <img src='{% static 'assets/img/iOSlow.jpg' %}' width="100%"/>
+        <img id="keyboardPic" src='{% static 'assets/img/iOSlow.jpg' %}' width="100%"/>
     </div>
 </div>
 
