@@ -15,25 +15,29 @@
 <body>
 
 
-<div id="main" class="container">
+<div style="text-align:center;" class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>The quick brown fox jumps over the lazy dog</h1>
+            <input id="resulthere" type="text" class="form-control" />
+        </div>
+    </div>
 
-    <label>The quick brown fox jumps over the lazy dog</label>
-
-{#    <input class="input form-control" id="inputbox" name="username" type="text" placeholder="enter here">#}
-    <textarea id="debugger" rows="10" disabled>THIS IS THE DEBUGGER</textarea>
-
-
-    <div id="virtualKeyboard"></div>
-
-    <hr>
 
 </div>
+<div id="keyboardContainer" style="position:fixed;top:1204px;">
+    <div style="width:100%;">
+        <img src='{% static 'assets/img/iOSlow.jpg' %}' width="100%"/>
+    </div>
+</div>
 
-
+{% csrf_token %}
 <script src="{% static "assets/bower_components/jquery/dist/jquery.js" %}"></script>
+<script src="{% static "assets/bower_components/lodash/lodash.js" %}"></script>
 {#<script src="{% static 'js/vendor/jquery-1.9.1.min.js'%}"></script>#}
+
 <script src="{% static "assets/js/vendor/bootstrap.min.js" %}"></script>
-<script type="text/javascript" src="{% static "assets/js/jsKeyboard.js" %}"></script>
+{#<script type="text/javascript" src="{% static "assets/js/jsKeyboard.js" %}"></script>#}
 <script src="{% static "assets/js/main.js" %}"></script>
 <script>
     var _gaq = [['_setAccount', 'UA-11577561-5'], ['_trackPageview']];

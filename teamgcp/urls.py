@@ -23,4 +23,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^teamgcp/', views.index),
+    url(r'^api/saveResult', views.saveResult),
 ]
