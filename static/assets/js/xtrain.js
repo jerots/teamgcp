@@ -101,7 +101,7 @@ var ctrl = {
 
         ctrl.reset();
         window.alert('Success!');
-        if (ctrl.counter >= 0) {
+        if (ctrl.counter > 0) {
             ctrl.counter--;
             $('#replacehere').attr('placeholder', 'Train ' + ctrl.counter + ' more times');
 
