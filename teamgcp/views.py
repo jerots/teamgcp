@@ -38,7 +38,7 @@ def saveResult(request):
         time=str(obj['data'][0]['down']['time'])
 
         filename=directory+inputtext+"_"+str(count)+".txt"
-        with open(filename, "w") as writefile:
+        with safe_open(filename, "w") as writefile:
             writefile.write(str(data))   
 
         sys.stderr.write("\t=== File saved: "+filename+" ===\n")
@@ -48,3 +48,17 @@ def saveResult(request):
     context = {}
     return render(request, 'index.html', context)
 
+import os, os.path
+
+# Taken from http://stackoverflow.com/a/600612/119527
+def safe_open(path, string):
+    ''' Open "path" for writing, creating any parent directories as needed.
+    '''
+    directory=os.path.dirname(path)
+    try:
+        os.makedirs(directory)
+    except OSError as exc: # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(directory):
+            pass
+        else: raise
+    return open(path, string)
