@@ -12,8 +12,11 @@ def index(request):
     return render(request, 'index.html', context)
 
 def registration(request):
-    # sys.stderr.write(request)
+
     context = {}
+    id = request.POST.get('id', False)
+    context['id'] = id
+
     return render(request, 'registration.html', context)
 
 

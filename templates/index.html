@@ -18,8 +18,8 @@
 <div style="text-align:center;" class="container-fluid">
     <div class="row" style="background:black;color:white;font-size:1.5em;padding:10px;">
         TEAM GCP
-{#        <button href="/teamgcp/" class="btn btn-default" style="color:black;position:absolute;right:10px;top:8px;"><span#}
-{#                class="glyphicon glyphicon-off"></span></button>#}
+        {#        <button href="/teamgcp/" class="btn btn-default" style="color:black;position:absolute;right:10px;top:8px;"><span#}
+        {#                class="glyphicon glyphicon-off"></span></button>#}
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -30,10 +30,14 @@
     <div class="row">
         <div class="col-xs-12" style="padding:20px;">
             {#            <button id="submit" class="btn btn-success">Train!</button>#}
-            <a href="/teamgcp/registration" id="reset" class="btn btn-success">Register</a>
-            <button id="reset" class="btn btn-info">Reset</button>
+            <button id="login" class="btn btn-info">Login</button>
+            <button id="register" class="btn btn-success">Register</button>
         </div>
     </div>
+    <form id="registrationForm" method="POST" action="/teamgcp/registration/">
+        {% csrf_token %}
+        <input id="username" name="id" type="hidden" />
+    </form>
 
 
 </div>

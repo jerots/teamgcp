@@ -48,16 +48,45 @@ var ctrl = {
         $('#keyboardContainer').on('touchend', function (event) {
             ctrl.record(event);
         });
-        $('#reset').on('touchend', function (event) {
-            ctrl.input = '';
-            $('#replacehere').val(ctrl.input);
-            ctrl.temp = {};
-            ctrl.tempResult = [];
-        });
-        $('#submit').on('touchend', function (event) {
-            
+        $('#register').on('touchend', function (event) {
+            ctrl.goToRegister();
         });
 
+    },
+    goToRegister: function () {
+        var csrftoken = '';
+        var cookies = document.cookie.split(';');
+        _.map(cookies, function (cookie) {
+            var keyValue = cookie.split('=');
+            if (keyValue[0].trim() == 'csrftoken') {
+                csrftoken = keyValue[1];
+            }
+            ;
+        });
+
+
+        // var data = {
+        //     id: $('#replacehere').val()
+        // };
+        $('#username').val($('#replacehere').val());
+        $('#registrationForm').submit();
+
+        // $.ajax({
+        //     url: '/teamgcp/registration/',
+        //     beforeSend: function (xhr) {
+        //         xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        //     },
+        //     type: 'POST',
+        //     data: JSON.stringify(data),
+        //     dataType: 'json',
+        //     success: function (res) {
+        //         console.log(res);
+        //        
+        //     },
+        //     error: function (err) {
+        //         console.log(err);
+        //     }
+        // });
     },
     prepare: function (e) {
         var oe = e.originalEvent;
@@ -172,51 +201,6 @@ var ctrl = {
         ctrl.tempResult.push(result);
 
 
-        if (result.letter == 'return') {
-
-            if (!ctrl.input || !ctrl.input.trim()) {
-                console.log('cannot');
-                return;
-            }
-
-            var finalResult = {
-                data: ctrl.tempResult,
-                id: $('#username').val(),
-                imposter: 'false',
-                text: ctrl.input
-            }
-
-            console.log('result', finalResult);
-            // $('#replacehere').val(JSON.stringify(finalResult));
-
-            var csrftoken = '';
-            var cookies = document.cookie.split(';');
-            _.map(cookies, function (cookie) {
-                var keyValue = cookie.split('=');
-                if (keyValue[0].trim() == 'csrftoken') {
-                    csrftoken = keyValue[1];
-                }
-                ;
-            });
-
-
-            $.ajax({
-                url: '/api/saveResult',
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                },
-                type: 'POST',
-                data: JSON.stringify(finalResult),
-                dataType: 'json',
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
-
-        }
         console.log(result);
 
     }

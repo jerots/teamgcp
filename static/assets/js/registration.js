@@ -38,7 +38,6 @@ var ctrl = {
     input: '',
     numbers: false,
     init: function () {
-
         $('#keyboardContainer').css({top: keyboardMarginTop});
 
 
@@ -182,7 +181,7 @@ var ctrl = {
             var finalResult = {
                 data: ctrl.tempResult,
                 // id: $('#username').val(),
-                id: 'TBC',
+                id: id,
                 imposter: 'false',
                 text: ctrl.input
             }
