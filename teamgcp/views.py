@@ -19,21 +19,29 @@ def registration(request):
 
 def saveResult(request):
     data = json.loads(request.body)
-    # sys.stderr.write(data['letter'])
-    # sys.stderr.write(request.POST);
+    
 
-    json=ast.literal_eval(data)
+    obj=ast.literal_eval(str(data))
 
-    inputtext=json['text'].replace(" ", "")
-    user=json['id']
+    inputtext=obj['text'].replace(" ", "")
+    user=obj['id'].replace(" ", "").lower()
 
-    if len(json['data']) > 0 :
-        time=str(json['data'][0]['down']['time'])
-        with open("data/"+user+"/"+inputtext+"_"+time+".txt", "w") as writefile:
-            writefile.write(data)    
+    directory="teamgcp/data/"+user+"/"
+    sys.stderr.write(user+","+inputtext+"\n")
 
-    sys.stderr.write(json.dumps(data))
-    # return HttpResponse(json.dumps(RESULT_JSON), content_type='application/json')
+    if len(obj['data']) > 0 :
+        count=len(glob.glob(directory+inputtext+"_*.txt"))+1
+        sys.stderr.write(str(count)+"\n")
+        time=str(obj['data'][0]['down']['time'])
+
+        filename=directory+inputtext+"_"+str(count)+".txt"
+        with open(filename, "w") as writefile:
+            writefile.write(str(data))   
+
+        sys.stderr.write("\t=== File saved: "+filename+" ===\n")
+
+    # sys.stderr.write(obj.dumps(str(data)))
+    # return HttpResponse(obj.dumps(RESULT_obj), content_type='application/obj')
     context = {}
     return render(request, 'index.html', context)
 

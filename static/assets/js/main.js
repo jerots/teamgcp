@@ -55,7 +55,7 @@ var ctrl = {
             ctrl.tempResult = [];
         });
         $('#submit').on('touchend', function (event) {
-
+            
         });
 
     },
@@ -172,7 +172,7 @@ var ctrl = {
         ctrl.tempResult.push(result);
 
 
-        if (result.letter == 'return' || result.letter == 'go') {
+        if (result.letter == 'return') {
 
             if (!ctrl.input || !ctrl.input.trim()) {
                 console.log('cannot');
