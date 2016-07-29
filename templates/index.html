@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width,user-scalable=no">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">
-    {#    <link rel="stylesheet" href="{% static 'assets/bower_components/bootstrap/dist/css/bootstrap.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static "assets/css/bootstrap.min.css" %}">#}
+    <link rel="stylesheet" href="{% static 'assets/bower_components/bootstrap/dist/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static "assets/css/bootstrap-responsive.min.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/main.css" %}">
     <link rel="stylesheet" href="{% static "assets/css/jsKeyboard.css" %}" type="text/css" media="screen"/>
@@ -17,29 +17,23 @@
 
 <div style="text-align:center;" class="container-fluid">
     <div class="row" style="background:black;color:white;font-size:1.5em;padding:10px;">
-        REGISTRATION
-    </div>
-    <div class="row">
-        <div class="col-xs-12" style="padding:0px;">
-{#            <h1>The quick brown fox jumps over the lazy dog</h1>#}
-            <h3>Username</h3>
-            <input type="text" id="username" class="form-control" style="width:90%;font-size:2em;padding:10px;"/>
-        </div>
+        TEAM GCP
+{#        <button href="/teamgcp/" class="btn btn-default" style="color:black;position:absolute;right:10px;top:8px;"><span#}
+{#                class="glyphicon glyphicon-off"></span></button>#}
     </div>
     <div class="row">
         <div class="col-xs-12">
-{#            <h1>The quick brown fox jumps over the lazy dog</h1>#}
-            <h3>Enter keyword below</h3>
-            <input type="text" id="replacehere" class="form-control" style="width:90%;font-size:2em;padding:10px;"/>
+            <h3>Username</h3>
+            <input type="text" id="replacehere" class="form-control" style="width:96%;font-size:2em;padding:10px;"/>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12" style="padding:20px;">
-{#            <button id="submit" class="btn btn-success">Train!</button>#}
+            {#            <button id="submit" class="btn btn-success">Train!</button>#}
+            <a href="/teamgcp/registration" id="reset" class="btn btn-success">Register</a>
             <button id="reset" class="btn btn-info">Reset</button>
         </div>
     </div>
-
 
 
 </div>

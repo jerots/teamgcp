@@ -11,6 +11,11 @@ def index(request):
     context = {}
     return render(request, 'index.html', context)
 
+def registration(request):
+    # sys.stderr.write(request)
+    context = {}
+    return render(request, 'registration.html', context)
+
 
 def saveResult(request):
     data = json.loads(request.body)
