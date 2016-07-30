@@ -93,7 +93,7 @@ def xsubmit(request):
         sys.stderr.write("\t=== File saved: "+filename+" ===\n")
 
     makeCSV("test",user,inputtext)
-    probabilities = getProbs(filepath,inputtext)
+    probabilities = getProbs(filename,user,inputtext)
 
     result = predict(probabilities)
 

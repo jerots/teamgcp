@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^teamgcp/xindex/', views.xindex),
     url(r'^teamgcp/xtrain/', views.xtrain),
     url(r'^api/saveResult', views.saveResult),
+    url(r'^api/xsubmit', views.xsubmit),
 ]
