@@ -72,7 +72,10 @@ var ctrl = {
             ctrl.reset();
             return;
         }
-        if (ctrl.input != 'codextreme2016'){
+
+
+        var validation = false;
+        if (ctrl.input != 'codextreme2016' && validation){
             window.alert('You have typed codextreme2016 incorrectly!');
             ctrl.reset();
             return;

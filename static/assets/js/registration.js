@@ -105,7 +105,8 @@ var ctrl = {
             return;
         }
 
-        if (ctrl.input != id.toLowerCase()) {
+        var validation = false;
+        if (ctrl.input != id.toLowerCase() && validation) {
             window.alert("You did not enter '" + id + "' correctly");
             return;
         }
@@ -133,13 +134,13 @@ var ctrl = {
 
         ctrl.reset();
 
-        if (ctrl.counter > 0) {
+        if (ctrl.counter > 1) {
             ctrl.counter--;
-            window.alert('Enter ' + id + ' ' + ctrl.counter + ' more times');
+            // window.alert('Enter ' + id + ' ' + ctrl.counter + ' more times');
             $('#replacehere').attr('placeholder', 'Enter ' + id + ' ' + ctrl.counter + ' more times');
 
         } else {
-            window.alert('Go on to login!');
+            // window.alert('Go on to login!');
             $('#replacehere').attr('placeholder', 'Go on to login!');
         }
 
