@@ -35,10 +35,10 @@ yArr2 = [
 var ctrl = {
     tempResult: [],
     temp: {},
+    counter: 5,
     input: '',
     numbers: false,
     init: function () {
-
         $('#keyboardContainer').css({top: keyboardMarginTop});
 
 
@@ -49,15 +49,18 @@ var ctrl = {
             ctrl.record(event);
         });
         $('#reset').on('touchend', function (event) {
-            ctrl.input = '';
-            $('#replacehere').val(ctrl.input);
-            ctrl.temp = {};
-            ctrl.tempResult = [];
+            ctrl.reset();
         });
         $('#submit').on('touchend', function (event) {
-
+            ctrl.submit();
         });
 
+    },
+    reset: function () {
+        ctrl.input = '';
+        $('#replacehere').val(ctrl.input);
+        ctrl.temp = {};
+        ctrl.tempResult = [];
     },
     prepare: function (e) {
         var oe = e.originalEvent;
@@ -95,6 +98,68 @@ var ctrl = {
         };
 
         ctrl.temp[letter] = downResult;
+    },
+    submit: function () {
+        if (!ctrl.input || !ctrl.input.trim()) {
+            console.log('cannot');
+            return;
+        }
+
+        var validation = false;
+        if (ctrl.input != id.toLowerCase() && validation) {
+            window.alert("You did not enter '" + id + "' correctly");
+            return;
+        }
+
+        var finalResult = {
+            data: ctrl.tempResult,
+            // id: $('#username').val(),
+            id: id,
+            imposter: 'false',
+            text: ctrl.input
+        }
+
+        console.log('result', finalResult);
+        // $('#replacehere').val(JSON.stringify(finalResult));
+
+        var csrftoken = '';
+        var cookies = document.cookie.split(';');
+        _.map(cookies, function (cookie) {
+            var keyValue = cookie.split('=');
+            if (keyValue[0].trim() == 'csrftoken') {
+                csrftoken = keyValue[1];
+            }
+            ;
+        });
+
+        ctrl.reset();
+
+        if (ctrl.counter > 1) {
+            ctrl.counter--;
+            // window.alert('Enter ' + id + ' ' + ctrl.counter + ' more times');
+            $('#replacehere').attr('placeholder', 'Enter ' + id + ' ' + ctrl.counter + ' more times');
+
+        } else {
+            // window.alert('Go on to login!');
+            $('#replacehere').attr('placeholder', 'Go on to login!');
+        }
+
+
+        $.ajax({
+            url: '/api/saveResult',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            type: 'POST',
+            data: JSON.stringify(finalResult),
+            dataType: 'json',
+            success: function (res) {
+                console.log(res);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     },
     record: function (e) {
         // console.log(e);
@@ -136,7 +201,9 @@ var ctrl = {
             ctrl.input += ' ';
             $('#replacehere').val(ctrl.input);
         } else if (letter == 'bkspace') {
-            ctrl.input = ctrl.input.substring(0, ctrl.input.length - 1);
+            ctrl.reset();
+            return;
+            // ctrl.input = ctrl.input.substring(0, ctrl.input.length - 1);
             $('#replacehere').val(ctrl.input);
         } else if (letter == '123' || letter == 'abc') {
             if (ctrl.numbers) {
@@ -174,47 +241,7 @@ var ctrl = {
 
         if (result.letter == 'return' || result.letter == 'go') {
 
-            if (!ctrl.input || !ctrl.input.trim()) {
-                console.log('cannot');
-                return;
-            }
-
-            var finalResult = {
-                data: ctrl.tempResult,
-                id: $('#username').val(),
-                imposter: 'false',
-                text: ctrl.input
-            }
-
-            console.log('result', finalResult);
-            // $('#replacehere').val(JSON.stringify(finalResult));
-
-            var csrftoken = '';
-            var cookies = document.cookie.split(';');
-            _.map(cookies, function (cookie) {
-                var keyValue = cookie.split('=');
-                if (keyValue[0].trim() == 'csrftoken') {
-                    csrftoken = keyValue[1];
-                }
-                ;
-            });
-
-
-            $.ajax({
-                url: '/api/saveResult',
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                },
-                type: 'POST',
-                data: JSON.stringify(finalResult),
-                dataType: 'json',
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
+            ctrl.submit();
 
         }
         console.log(result);
