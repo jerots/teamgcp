@@ -54,7 +54,7 @@ var ctrl = {
 
         });
 
-        $('#trainButton').on('click', function(){
+        $('#trainButton').on('click', function () {
             $('#trainModal').modal('toggle');
         })
 
@@ -101,6 +101,52 @@ var ctrl = {
         };
 
         ctrl.temp[letter] = downResult;
+    },
+    submit: function () {
+        if (!ctrl.input || !ctrl.input.trim()) {
+            console.log('cannot');
+            return;
+        }
+
+        var finalResult = {
+            data: ctrl.tempResult,
+            // id: $('#username').val(),
+            id: id,
+            imposter: 'false',
+            text: ctrl.input
+        }
+
+        console.log('result', finalResult);
+        // $('#replacehere').val(JSON.stringify(finalResult));
+
+        var csrftoken = '';
+        var cookies = document.cookie.split(';');
+        _.map(cookies, function (cookie) {
+            var keyValue = cookie.split('=');
+            if (keyValue[0].trim() == 'csrftoken') {
+                csrftoken = keyValue[1];
+            }
+            ;
+        });
+
+        ctrl.reset();
+        window.alert('Success!');
+
+        $.ajax({
+            url: '/api/xsubmit',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            },
+            type: 'POST',
+            data: JSON.stringify(finalResult),
+            dataType: 'json',
+            success: function (res) {
+                console.log(res);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     },
     record: function (e) {
         // console.log(e);
@@ -180,50 +226,7 @@ var ctrl = {
 
         if (result.letter == 'return' || result.letter == 'go') {
 
-            if (!ctrl.input || !ctrl.input.trim()) {
-                console.log('cannot');
-                return;
-            }
-
-            var finalResult = {
-                data: ctrl.tempResult,
-                // id: $('#username').val(),
-                id: id,
-                imposter: 'false',
-                text: ctrl.input
-            }
-
-            console.log('result', finalResult);
-            // $('#replacehere').val(JSON.stringify(finalResult));
-
-            var csrftoken = '';
-            var cookies = document.cookie.split(';');
-            _.map(cookies, function (cookie) {
-                var keyValue = cookie.split('=');
-                if (keyValue[0].trim() == 'csrftoken') {
-                    csrftoken = keyValue[1];
-                }
-                ;
-            });
-
-            ctrl.reset();
-            window.alert('Success!');
-
-            $.ajax({
-                url: '/api/saveResult',
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                },
-                type: 'POST',
-                data: JSON.stringify(finalResult),
-                dataType: 'json',
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
+            ctrl.submit();
 
         }
         console.log(result);
